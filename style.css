@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  background-color: #004980;
+  font-family: 'Montserrat';
+}
+
+.container {
+  position: relative;
+  margin-top: 100px;
+  width: 480px;
+  height: 459px;
+  background: #C2F5FF;
+  border-radius: 12px;
+  padding: 20px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.label__text {
+  font-style: normal;
+  width: 208px;
+  height: 96px;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  color: #004980;
+}
+
+.field__control,
+.game_lever_text {
+  color: #0080C1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 98px;
+  height: 98px;
+  left: 585px;
+  top: 354px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.field__control,
+.game_lever_text:hover {
+  color: #8c8b8b;
+}
+
+.field__control,
+.game_lever_text:checked {
+  color: #414141;
+}
+
+.btn__start {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #FFFFFF;
+  width: 246px;
+  height: 50px;
+  left: 389px;
+  top: 519px;
+  background: #7AC100;
+  border-radius: 12px;
+  border: 1px solid #354c0f;
+  margin-top: 67px;
+}
+/*# sourceMappingURL=style.css.map */
