@@ -1,17 +1,25 @@
 const btnStart = document.querySelector('.btn__start');
-const easyLvl = document.getElementById('game_level_easy').value;
-const normalLvl = document.getElementById('game_level_normal').value;
-const hardLvl = document.getElementById('game_level_hard').value;
+const fieldControls = document.querySelectorAll('.field__control');
+let game_level =[];
 
-btnStart.addEventListener('click', () => startGame(difficult));
-// Запуск игры и выбор сложности 
-const startGame = (difficult) => {
+// сохранение уровня сложности в глоб сост
+for (let i = 0; i < fieldControls.length; i++) {
+    fieldControls[i].addEventListener('click', () => {
+    console.log(`${fieldControls[i].name}: ${fieldControls[i].value}`);
+    localStorage.setItem('level', fieldControls[i].value);
+    game_level = localStorage.level;
+})};
+
+btnStart.addEventListener('click', () => startGame(game_level));
+// Запуск игры и выбор сложности принимает изначальную сложность игры
+const startGame = (game_level) => {
     let firstCard = null;
     let secondCard = null;
     let clickable = true;
 
-    const gameTable = document.createElement('div'); //Тут будет стол с игрой
-    const cardsIcons = createIconsArray(difficult);
+    const gameSection = document.querySelector('.game-section_container');
+    const gameTable = document.createElement('div'); // тут будет стол с игрой
+    const cardsIcons = createIconsArray(game_level);
     const duplicatedCardsIcons = duplicateArray(cardsIcons);
 
     shuffle(duplicatedCardsIcons);
@@ -39,13 +47,13 @@ const createIconsArray = (initialCount) => {
     ];
 
     switch (initialCount) {
-        case easyLvl:
+        case '6':
             return cardsIcons.slice(0, 3)
         
-        case normalLvl:
+        case '12':
             return cardsIcons.slice(0, 6)
             
-        case hardLvl:
+        case '18':
             return cardsIcons.slice(0, 9)
                     
         default:
