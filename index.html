@@ -15,7 +15,7 @@
 
     <form class="container">
         <label class="label__text">Choose the level:</label> 
-        <div class="field game-section_container">
+        <div class="field">
             
             <div class="form__field">
                 <label class="game_lever_text" for="game_level_easy">1</label>
@@ -46,9 +46,19 @@
                 value="18"
             >
         </div>
-        <button class="btn__start">Start</button>
+        <div class="btn__start">Start</div>
     </form>
     
+    <!-- Генератор карт -->
+    <div class="game-section_container cardsField">
+        <div class="game-section_top">
+            <div class="timer">
+                00.00
+            </div>
+            <div class="restart_btn">Restart</div>
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 </body>

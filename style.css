@@ -15,7 +15,7 @@ body {
           align-items: center;
   height: 100vh;
   background-color: #004980;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .container {
@@ -23,7 +23,7 @@ body {
   margin-top: 100px;
   width: 480px;
   height: 459px;
-  background: #C2F5FF;
+  background: #c2f5ff;
   border-radius: 12px;
   padding: 20px 40px;
   display: -webkit-box;
@@ -38,7 +38,7 @@ body {
           align-items: center;
 }
 
-input[type=radio] {
+input[type="radio"] {
   display: none;
 }
 
@@ -62,7 +62,7 @@ input[type=radio] {
 
 .field__control,
 .game_lever_text {
-  color: #0080C1;
+  color: #0080c1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,9 +73,9 @@ input[type=radio] {
   height: 98px;
   left: 585px;
   top: 354px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 12px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -98,18 +98,104 @@ input[type=radio] {
 }
 
 .btn__start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 246px;
   height: 50px;
   left: 389px;
   top: 519px;
-  background: #7AC100;
+  background: #7ac100;
   border-radius: 12px;
-  border: 1px solid #7AC100;
+  border: 1px solid #7ac100;
   margin-top: 67px;
+}
+
+.game-section_container div {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  -ms-flex-negative: none;
+      flex-shrink: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  max-width: 785px;
+}
+
+.game-section_top {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.timer {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #ffffff;
+}
+
+.cardsField {
+  display: none;
+}
+
+.game-card {
+  width: 95px;
+  height: 133px;
+  background: #ffffff;
+  border-radius: 4px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  background-image: url(./img/notFlippedCard.svg);
+}
+
+.game-card i {
+  display: none;
+}
+
+.game-card i + i {
+  display: block;
+}
+
+.restart_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+  width: 246px;
+  height: 50px;
+  left: 389px;
+  top: 519px;
+  background: #7ac100;
+  border-radius: 12px;
+  border: 1px solid #7ac100;
+  margin-top: 52px;
+  margin-bottom: 46px;
 }
 /*# sourceMappingURL=style.css.map */

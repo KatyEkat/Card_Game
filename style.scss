@@ -1,95 +1,182 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #004980;
-    font-family: 'Montserrat';
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #004980;
+  font-family: "Montserrat";
 }
 
-.container{
-    position: relative;
-    margin-top: 100px;
-    width: 480px;
-    height: 459px;
-    background:  #C2F5FF;
-    border-radius: 12px;
-    padding: 20px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container {
+  position: relative;
+  margin-top: 100px;
+  width: 480px;
+  height: 459px;
+  background: #c2f5ff;
+  border-radius: 12px;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-input[type=radio] {
-    display:none;
+input[type="radio"] {
+  display: none;
 }
 
-.field{
-    display: flex;
-    gap: 24px;
-    margin-top: 48px;
+.field {
+  display: flex;
+  gap: 24px;
+  margin-top: 48px;
 }
 
-
-.label__text{
-    font-style: normal;
-    width: 208px;
-    height: 96px;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 48px;
-    color: #004980;
-}
-
-.field__control,
-.game_lever_text{
-    color: #0080C1;
-    display: flex;
-    justify-content: center; 
-    width: 98px;
-    height: 98px;
-    left: 585px;
-    top: 354px;
-    background: #FFFFFF;
-    border-radius: 12px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    line-height: 72px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+.label__text {
+  font-style: normal;
+  width: 208px;
+  height: 96px;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  color: #004980;
 }
 
 .field__control,
-.game_lever_text:hover{
-    color: rgb(140, 139, 139);
+.game_lever_text {
+  color: #0080c1;
+  display: flex;
+  justify-content: center;
+  width: 98px;
+  height: 98px;
+  left: 585px;
+  top: 354px;
+  background: #ffffff;
+  border-radius: 12px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 .field__control,
-.game_lever_text:checked{
-    color: rgb(65, 65, 65);
+.game_lever_text:hover {
+  color: rgb(140, 139, 139);
 }
 
-.btn__start{
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
-    color: #FFFFFF;
+.field__control,
+.game_lever_text:checked {
+  color: rgb(65, 65, 65);
+}
 
-    width: 246px;
-    height: 50px;
-    left: 389px;
-    top: 519px;
-    background: #7AC100;
-    border-radius: 12px;
-    border: 1px solid #7AC100;
-    margin-top: 67px;
+.btn__start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+
+  width: 246px;
+  height: 50px;
+  left: 389px;
+  top: 519px;
+  background: #7ac100;
+  border-radius: 12px;
+  border: 1px solid #7ac100;
+  margin-top: 67px;
+}
+
+//Стили для карт и игрового пространства
+
+.game-table {
+  // flex-wrap: wrap;
+  // justify-content: center;
+}
+.game-section_container {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: flex-end;
+}
+.game-section_container div {
+  flex-basis: 30%;
+  flex-shrink: none;
+  display: flex;
+  gap: 15px;
+  max-width: 785px;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  // justify-content: center;
+}
+.game-section_top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #ffffff;
+}
+
+.cardsField {
+  display: none;
+}
+
+.game-card {
+  width: 95px;
+  height: 133px;
+  background: #ffffff;
+  border-radius: 4px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  transition: all 0.2s linear;
+  background-image: url(./img/notFlippedCard.svg);
+}
+
+.game-card i {
+  display: none;
+}
+
+.game-card i + i {
+  display: block;
+}
+
+// .notFlippedCard {
+//   background-image: url(./img/notFlippedCard.svg);
+// }
+
+.restart_btn {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+
+  width: 246px;
+  height: 50px;
+  left: 389px;
+  top: 519px;
+  background: #7ac100;
+  border-radius: 12px;
+  border: 1px solid #7ac100;
+  margin-top: 52px;
+  margin-bottom: 46px;
 }
