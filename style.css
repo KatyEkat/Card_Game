@@ -122,16 +122,28 @@ input[type="radio"] {
   margin-top: 67px;
 }
 
+.game-table {
+  max-width: 500px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .game-section_container div {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
-  -ms-flex-negative: none;
-      flex-shrink: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 35px;
   gap: 15px;
-  max-width: 785px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-right: 26px;
+  margin-left: 26px;
 }
 
 .game-section_top {
@@ -139,12 +151,14 @@ input[type="radio"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-right: 26px;
+  margin-left: 26px;
 }
 
 .timer {
@@ -166,6 +180,7 @@ input[type="radio"] {
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
   background-image: url(./img/notFlippedCard.svg);
+  background-repeat: no-repeat;
 }
 
 .game-card i {
@@ -183,6 +198,9 @@ input[type="radio"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -197,5 +215,27 @@ input[type="radio"] {
   border: 1px solid #7ac100;
   margin-top: 52px;
   margin-bottom: 46px;
+}
+
+.game-card_flip {
+  background: #5dc6ff !important;
+  -webkit-transform: perspective(100px), rotateY(180deg);
+          transform: perspective(100px), rotateY(180deg);
+}
+
+.game-card_flip i {
+  display: block;
+}
+
+.game-card_flip i + i {
+  display: none;
+}
+
+.game-card.successfully {
+  background: #34c957;
+}
+
+.game-card:hover {
+  background: #c2f5ff;
 }
 /*# sourceMappingURL=style.css.map */

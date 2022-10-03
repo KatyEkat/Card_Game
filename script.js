@@ -21,9 +21,9 @@ for (let i = 0; i < fieldControls.length; i++) {
 btnStart.addEventListener("click", () => startGame(game_level));
 // Запуск игры и выбор сложности принимает изначальную сложность игры
 const startGame = (game_level) => {
-  // let firstCard = null;
-  // let secondCard = null;
-  // let clickable = true;
+  let firstCard = null;
+  let secondCard = null;
+  let clickable = true;
   
   container.toggle('cardsField');
   cardField.toggle('cardsField');
@@ -133,11 +133,58 @@ const createGameCard = (defaultIcon, flippedCardIcon) => {
   const notFlippedCardI = document.createElement("i");
   const flippedCardI = document.createElement("i");
 
-  notFlippedCardI.classList.add(`notFlippedCard-${defaultIcon}`);
-  flippedCardI.classList.add(`flippedCard-${flippedCardIcon}`);
+  notFlippedCardI.classList.add(`notFlippedCard`,`notFlippedCard-${defaultIcon}`);
+  flippedCardI.classList.add(`flippedCard`, `flippedCard-${flippedCardIcon}`);
 
   card.append(flippedCardI, notFlippedCardI);
 
   return card;
 };
  
+duplicatedCardsIcons.forEach(icon => gameTable.append(createGameCard ('game-card', icon)));
+
+gameSection.append(gameTable, restartBtn);
+
+const cards = document.querySelectorAll('.game-card');
+
+cards.forEach((card, index) => card.addEventListener('click', () => {
+  if (clickable === true && !card.classList.contains('successfully')) {
+    card.classList.add('flip');
+
+    if(firstCard == null){
+        firstCard = index;
+    } else {
+      if(index != firstCard){
+        secondCard = index;
+        clickable = false;
+      }
+    }
+    if (firstCard != null && secondCard != null && firstCard != secondCard) {
+        if (cards[firstCard].firstElementChild.className === cards[secondCard].firstElementChild.className) {   setTimeout(() =>{
+              cards[firstCard].classList.add('successfully'); 
+              cards[secondCard].classList.add('successfully');
+
+              firstCard = null;
+              secondCard = null;
+              clickable = true;
+            }, 500);
+        } else {
+          setTimeout(() =>{
+            cards[firstCard].classList.remove('flip'); 
+            cards[secondCard].classList.remove('flip');
+
+            firstCard = null;
+            secondCard = null;
+            clickable = true;
+          }, 500);
+        }
+
+    }
+
+  }
+
+}));
+
+
+//таймер для игры
+
