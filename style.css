@@ -191,6 +191,19 @@ input[type="radio"] {
   display: block;
 }
 
+.flippedCard {
+  width: 100%;
+  height: 100%;
+  background-color: lightpink;
+}
+
+.notFlippedCard {
+  background-image: url("./img/notFlippedCard.svg");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
 .restart_btn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -223,11 +236,11 @@ input[type="radio"] {
           transform: perspective(100px), rotateY(180deg);
 }
 
-.game-card_flip i {
+.game-card.flip i {
   display: block;
 }
 
-.game-card_flip i + i {
+.game-card.flip i + i {
   display: none;
 }
 
@@ -235,7 +248,7 @@ input[type="radio"] {
   background: #34c957;
 }
 
-.game-card:hover {
+.game-card i + i:hover {
   background: #c2f5ff;
 }
 /*# sourceMappingURL=style.css.map */
