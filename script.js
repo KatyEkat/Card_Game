@@ -4,12 +4,15 @@ let game_level = [];
 const gameSection = document.querySelector(".game-section_container");
 const gameTable = document.createElement("div"); // тут будет стол с игрой
 
-const restartBtn = document.createElement("div");
+const restartBtn = document.querySelector(".restart_btn");
 const hidden = document.querySelector(".hide");
 const container = document.querySelector(".container").classList;
 const cardField = document.querySelector(".game-section_container").classList;
 
 let cards = [];
+
+const winScreen = document.querySelector(".result_screen_win_container");
+const lostScreen = document.querySelector(".result_screen_lost");
 
 // сохранение уровня сложности в глоб сост
 for (let i = 0; i < fieldControls.length; i++) {
@@ -35,7 +38,6 @@ const startGame = (game_level) => {
 
   shuffle(duplicatedCardsIcons);
 
-  console.log(duplicatedCardsIcons);
   duplicatedCardsIcons.forEach((icon) =>
     gameTable.append(createGameCard("notFlippedCard", icon))
   ); //изменить notFlippedCard
@@ -49,9 +51,6 @@ const startGame = (game_level) => {
       return (num < 10 ? "0" : "") + num;
     }
 
-    let hours = Math.floor(total_seconds / 3600);
-    total_seconds = total_seconds % 3600;
-
     let minutes = Math.floor(total_seconds / 60);
     total_seconds = total_seconds % 60;
 
@@ -60,7 +59,7 @@ const startGame = (game_level) => {
     minutes = pretty_time_string(minutes);
     seconds = pretty_time_string(seconds);
 
-    let currentTimeString = minutes + ":" + seconds;
+    const currentTimeString = minutes + ":" + seconds;
     return currentTimeString;
   }
 
@@ -72,12 +71,20 @@ const startGame = (game_level) => {
 
   cards = document.querySelectorAll(".game-card");
 
+  const karty = document.querySelectorAll(".game-card");
+  karty.forEach((karta, index) => karta.classList.add("flip"));
+  karty.forEach((karta, index) =>
+    setTimeout(() => {
+      karta.classList.remove("flip");
+    }, 2000)
+  );
+
   cards.forEach((card, index) =>
     card.addEventListener("click", () => {
       if (clickable === true && !card.classList.contains("successfully")) {
         card.classList.add("flip");
 
-        if (firstCard === null) {
+        if (firstCard == null) {
           firstCard = index;
         } else {
           if (index != firstCard) {
@@ -114,6 +121,19 @@ const startGame = (game_level) => {
           }
         }
       }
+
+      if (Array.from(cards).every((card) => card.className.includes("flip"))) {
+        gameSection.remove(gameTable);
+        winScreen.style.display = "inherit";
+        setTimeout(500);
+        document.querySelector(".timer").classList.remove("timer");
+      }
+      if (Array.from(cards).oneOf((card) => card.className.includes("flip"))) {
+        gameSection.remove(gameTable);
+        lostScreen.style.display = "inherit";
+        setTimeout(500);
+        document.querySelector(".timer").classList.remove("timer");
+      }
     })
   );
 };
@@ -125,52 +145,163 @@ const duplicateArray = (array) =>
 
 const createIconsArray = (initialCount) => {
   const cardsIcons = [
-    "6♠️",
-    "6♣️",
-    "6♥️",
-    "6♦️",
-    "7♠️",
-    "7♣️",
-    "7♥️",
-    "7♦️",
-    "8♠️",
-    "8♣️",
-    "8♥️",
-    "8♦️",
-    "9♠️",
-    "9♣️",
-    "9♥️",
-    "9♦️",
-    "10♠️",
-    "10♣️",
-    "10♥️",
-    "10♦️",
-    "Q♠️",
-    "Q♣️",
-    "Q♥️",
-    "Q♦️",
-    "K♠️",
-    "K♣️",
-    "K♥️",
-    "K♦️",
-    "J♠️",
-    "J♣️",
-    "J♥️",
-    "J♦️",
-    "A♠️",
-    "A♣️",
-    "A♥️",
-    "A♦️",
+    {
+      value: "6",
+      suit: "peaks",
+    },
+    {
+      value: "7",
+      suit: "peaks",
+    },
+    {
+      value: "8",
+      suit: "peaks",
+    },
+    {
+      value: "9",
+      suit: "peaks",
+    },
+    {
+      value: "10",
+      suit: "peaks",
+    },
+    {
+      value: "Q",
+      suit: "peaks",
+    },
+    {
+      value: "K",
+      suit: "peaks",
+    },
+    {
+      value: "J",
+      suit: "peaks",
+    },
+    {
+      value: "A",
+      suit: "peaks",
+    },
+    {
+      value: "6",
+      suit: "tambourine",
+    },
+    {
+      value: "7",
+      suit: "tambourine",
+    },
+    {
+      value: "8",
+      suit: "tambourine",
+    },
+    {
+      value: "9",
+      suit: "tambourine",
+    },
+    {
+      value: "10",
+      suit: "tambourine",
+    },
+    {
+      value: "Q",
+      suit: "tambourine",
+    },
+    {
+      value: "K",
+      suit: "tambourine",
+    },
+    {
+      value: "J",
+      suit: "tambourine",
+    },
+    {
+      value: "A",
+      suit: "tambourine",
+    },
+    {
+      value: "6",
+      suit: "cross",
+    },
+    {
+      value: "7",
+      suit: "cross",
+    },
+    {
+      value: "8",
+      suit: "cross",
+    },
+    {
+      value: "9",
+      suit: "cross",
+    },
+    {
+      value: "10",
+      suit: "cross",
+    },
+    {
+      value: "Q",
+      suit: "cross",
+    },
+    {
+      value: "K",
+      suit: "cross",
+    },
+    {
+      value: "J",
+      suit: "cross",
+    },
+    {
+      value: "A",
+      suit: "cross",
+    },
+    {
+      value: "6",
+      suit: "hearts",
+    },
+    {
+      value: "7",
+      suit: "hearts",
+    },
+    {
+      value: "8",
+      suit: "hearts",
+    },
+    {
+      value: "9",
+      suit: "hearts",
+    },
+    {
+      value: "10",
+      suit: "hearts",
+    },
+    {
+      value: "Q",
+      suit: "hearts",
+    },
+    {
+      value: "K",
+      suit: "hearts",
+    },
+    {
+      value: "J",
+      suit: "hearts",
+    },
+    {
+      value: "A",
+      suit: "hearts",
+    },
   ];
 
   switch (initialCount) {
     case "6":
+      shuffle(cardsIcons);
       return cardsIcons.slice(0, 3);
 
     case "12":
+      shuffle(cardsIcons);
       return cardsIcons.slice(0, 6);
 
     case "18":
+      shuffle(cardsIcons);
       return cardsIcons.slice(0, 9);
 
     default:
@@ -206,17 +337,19 @@ const createGameCard = (defaultIcon, flippedCardIcon) => {
   const notFlippedCardI = document.createElement("i");
   const flippedCardI = document.createElement("i");
 
-  notFlippedCardI.classList.add(
-    `notFlippedCard`,
-    `notFlippedCard-${defaultIcon}`
+  notFlippedCardI.classList.add(`notFlippedCard`);
+  flippedCardI.innerHTML = `${flippedCardIcon.value}`;
+  flippedCardI.classList.add(
+    `flippedCard`,
+    `${flippedCardIcon.suit}`,
+    `${flippedCardIcon.value}`
   );
-  flippedCardI.classList.add(`flippedCard`, `flippedCard-${flippedCardIcon}`);
 
   card.append(flippedCardI, notFlippedCardI);
 
   return card;
 };
 
-// duplicatedCardsIcons.forEach(icon => gameTable.append(createGameCard ('game-card', icon)));
-
 gameSection.append(gameTable, restartBtn);
+
+restartBtn.addEventListener("click", () => window.location.reload());

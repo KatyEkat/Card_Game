@@ -179,8 +179,6 @@ input[type="radio"] {
   border-radius: 4px;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  background-image: url(./img/notFlippedCard.svg);
-  background-repeat: no-repeat;
 }
 
 .game-card i {
@@ -194,7 +192,155 @@ input[type="radio"] {
 .flippedCard {
   width: 100%;
   height: 100%;
-  background-color: lightpink;
+  position: absolute;
+}
+
+.peaks {
+  position: relative;
+  background-image: url(./img/peaks.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
+
+.peaks::before {
+  content: attr(data-value);
+  position: absolute;
+  width: 14px;
+  height: 32px;
+  background-image: url(./img/peaks.svg);
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  background-position: left bottom;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  top: 29px;
+  left: 12px;
+}
+
+.peaks::after {
+  content: attr(data-value);
+  position: absolute;
+  width: 14px;
+  height: 32px;
+  background-image: url(./img/peaks.svg);
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  bottom: 29px;
+  right: 12px;
+}
+
+.tambourine {
+  position: relative;
+  background-image: url(./img/tambourine.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
+
+.tambourine::before {
+  content: attr(data-value);
+  position: absolute;
+  width: 14px;
+  height: 32px;
+  background-image: url(./img/tambourine.svg);
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  background-position: left bottom;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  top: 29px;
+  left: 12px;
+}
+
+.tambourine::after {
+  content: attr(data-value);
+  position: absolute;
+  width: 14px;
+  height: 32px;
+  background-image: url(./img/tambourine.svg);
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  bottom: 29px;
+  right: 12px;
+}
+
+.cross {
+  position: relative;
+  background-image: url(./img/cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
+
+.cross::before {
+  content: attr(data-value);
+  position: absolute;
+  width: 14px;
+  height: 32px;
+  background-image: url(./img/cross.svg);
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  background-position: left bottom;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  top: 29px;
+  left: 12px;
+}
+
+.cross::after {
+  content: attr(data-value);
+  position: absolute;
+  width: 14px;
+  height: 32px;
+  background-image: url(./img/cross.svg);
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  bottom: 29px;
+  right: 12px;
+}
+
+.hearts {
+  position: relative;
+  background-image: url(./img/hearts.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
+
+.hearts::before {
+  content: attr(data-value);
+  position: absolute;
+  width: 14px;
+  height: 32px;
+  background-image: url(./img/hearts.svg);
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  background-position: left bottom;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  top: 29px;
+  left: 12px;
+}
+
+.hearts::after {
+  content: attr(data-value);
+  position: absolute;
+  width: 14px;
+  height: 32px;
+  background-image: url(./img/hearts.svg);
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  bottom: 29px;
+  right: 12px;
 }
 
 .notFlippedCard {
@@ -204,7 +350,8 @@ input[type="radio"] {
   height: 100%;
 }
 
-.restart_btn {
+.restart_btn,
+.restart_btn_results {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,5 +397,63 @@ input[type="radio"] {
 
 .game-card i + i:hover {
   background: #c2f5ff;
+}
+
+.result_screen_win_container {
+  display: none;
+  background: #c2f5ff;
+  border-radius: 12px;
+  background-position: center;
+}
+
+.result_screen_lost_container {
+  display: none;
+  background: #c2f5ff;
+  border-radius: 12px;
+  background-position: center;
+}
+
+.result_screen_win,
+.result_screen_lost {
+  width: 480px;
+  height: 459px;
+  background: #c2f5ff;
+  border-radius: 12px;
+  background-position: center;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.win_screen,
+.lost_screen {
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+}
+
+.screen_img {
+  margin-top: 30px;
+  margin-bottom: 4px;
+}
+
+.win_screen_title,
+.lost_screen_title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  margin-bottom: 28px;
+}
+
+.win_screen_subtitle,
+.lost_screen_subtitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=style.css.map */
