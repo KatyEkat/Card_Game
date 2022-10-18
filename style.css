@@ -350,8 +350,7 @@ input[type="radio"] {
   height: 100%;
 }
 
-.restart_btn,
-.restart_btn_results {
+.restart_btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

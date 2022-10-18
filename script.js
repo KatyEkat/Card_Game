@@ -67,7 +67,7 @@ const startGame = (game_level) => {
   setInterval(function () {
     elapsed_seconds = elapsed_seconds + 1;
     $(".timer").text(get_elapsed_time_string(elapsed_seconds));
-  }, 1000);
+  }, 5000);
 
   cards = document.querySelectorAll(".game-card");
 
@@ -76,7 +76,7 @@ const startGame = (game_level) => {
   karty.forEach((karta, index) =>
     setTimeout(() => {
       karta.classList.remove("flip");
-    }, 2000)
+    }, 5000)
   );
 
   cards.forEach((card, index) =>
@@ -128,7 +128,10 @@ const startGame = (game_level) => {
         setTimeout(500);
         document.querySelector(".timer").classList.remove("timer");
       }
-      if (Array.from(cards).oneOf((card) => card.className.includes("flip"))) {
+
+      if (
+        Array.from(cards).forEach((card) => card.className.includes("flip"))
+      ) {
         gameSection.remove(gameTable);
         lostScreen.style.display = "inherit";
         setTimeout(500);
@@ -352,4 +355,6 @@ const createGameCard = (defaultIcon, flippedCardIcon) => {
 
 gameSection.append(gameTable, restartBtn);
 
-restartBtn.addEventListener("click", () => window.location.reload());
+document.querySelectorAll(".restart_btn").forEach((button) => {
+  button.addEventListener("click", () => window.location.reload());
+});
