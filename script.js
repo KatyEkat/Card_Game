@@ -12,7 +12,7 @@ const cardField = document.querySelector(".game-section_container").classList;
 let cards = [];
 
 const winScreen = document.querySelector(".result_screen_win_container");
-const lostScreen = document.querySelector(".result_screen_lost");
+const lostScreen = document.querySelector(".result_screen_lost_container");
 
 // сохранение уровня сложности в глоб сост
 for (let i = 0; i < fieldControls.length; i++) {
@@ -24,6 +24,7 @@ for (let i = 0; i < fieldControls.length; i++) {
 }
 
 btnStart.addEventListener("click", () => startGame(game_level));
+
 // Запуск игры и выбор сложности принимает изначальную сложность игры
 const startGame = (game_level) => {
   let firstCard = null;
@@ -40,7 +41,7 @@ const startGame = (game_level) => {
 
   duplicatedCardsIcons.forEach((icon) =>
     gameTable.append(createGameCard("notFlippedCard", icon))
-  ); //изменить notFlippedCard
+  );
 
   gameSection.append(gameTable, restartBtn);
 
@@ -63,11 +64,16 @@ const startGame = (game_level) => {
     return currentTimeString;
   }
 
-  let elapsed_seconds = 0;
-  setInterval(function () {
-    elapsed_seconds = elapsed_seconds + 1;
-    $(".timer").text(get_elapsed_time_string(elapsed_seconds));
-  }, 5000);
+  let elapsed_seconds = -5;
+  
+  function setTimer(value){
+    setTimeout(function(){
+      $(".timer").text(get_elapsed_time_string(elapsed_seconds));
+    },5000);
+  }
+  setInterval(function(){
+    setTimer(elapsed_seconds++)
+  },1000);
 
   cards = document.querySelectorAll(".game-card");
 
@@ -76,67 +82,58 @@ const startGame = (game_level) => {
   karty.forEach((karta, index) =>
     setTimeout(() => {
       karta.classList.remove("flip");
+	  
     }, 5000)
   );
 
   cards.forEach((card, index) =>
     card.addEventListener("click", () => {
-      if (clickable === true && !card.classList.contains("successfully")) {
+      if (clickable === true && !card.classList.contains("successfully")) 
+	  {
         card.classList.add("flip");
-
-        if (firstCard == null) {
+        if (firstCard == null) 
+		{
           firstCard = index;
-        } else {
-          if (index != firstCard) {
+        } 
+		else 
+		{
+          if (index != firstCard) 
+		  {
             secondCard = index;
             clickable = false;
+	      }
+	    }
+        if ( firstCard != null && secondCard != null && firstCard != secondCard ) 
+	    {
+          if (cards[firstCard].firstElementChild.className === cards[secondCard].firstElementChild.className) 
+	   	  {
+			  setTimeout(() => {
+                cards[firstCard].classList.add("successfully");
+                cards[secondCard].classList.add("successfully");
+	   	    
+                firstCard = null;
+                secondCard = null;
+                clickable = true;
+                }, 500);
+
+			  if (Array.from(cards).every((card) => card.className.includes("flip"))) {
+				gameSection.remove(gameTable);
+				winScreen.style.display = "inherit";
+				setTimeout(500);
+				document.querySelectorAll('.timer')[0].classList.remove("timer");
+			  }
+          } 
+		  else 
+	      {
+		    if (!Array.from(cards).every((card) => card.className.includes("flip"))) {
+			  gameSection.remove(gameTable);
+			  lostScreen.style.display = "inherit";
+			  setTimeout(500);
+			  document.querySelectorAll('.timer')[1].classList.remove("timer");
+		    }
           }
         }
-        if (
-          firstCard != null &&
-          secondCard != null &&
-          firstCard != secondCard
-        ) {
-          if (
-            cards[firstCard].firstElementChild.className ===
-            cards[secondCard].firstElementChild.className
-          ) {
-            setTimeout(() => {
-              cards[firstCard].classList.add("successfully");
-              cards[secondCard].classList.add("successfully");
-
-              firstCard = null;
-              secondCard = null;
-              clickable = true;
-            }, 500);
-          } else {
-            setTimeout(() => {
-              cards[firstCard].classList.remove("flip");
-              cards[secondCard].classList.remove("flip");
-
-              firstCard = null;
-              secondCard = null;
-              clickable = true;
-            }, 500);
-          }
-        }
-      }
-
-      if (Array.from(cards).every((card) => card.className.includes("flip"))) {
-        gameSection.remove(gameTable);
-        winScreen.style.display = "inherit";
-        setTimeout(500);
-        document.querySelector(".timer").classList.remove("timer");
-      }
-
-      if (
-        Array.from(cards).forEach((card) => card.className.includes("flip"))
-      ) {
-        gameSection.remove(gameTable);
-        lostScreen.style.display = "inherit";
-        setTimeout(500);
-        document.querySelector(".timer").classList.remove("timer");
-      }
+	  }
     })
   );
 };
@@ -330,6 +327,7 @@ const shuffle = (array) => {
 
   return array;
 };
+
 
 //Создание карт
 
