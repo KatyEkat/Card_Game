@@ -1,139 +1,152 @@
-const btnStart = document.querySelector(".btn__start");
-const fieldControls = document.querySelectorAll(".field__control");
-let game_level = [];
-const gameSection = document.querySelector(".game-section_container");
-const gameTable = document.createElement("div"); // тут будет стол с игрой
-
-const restartBtn = document.querySelector(".restart_btn");
-const hidden = document.querySelector(".hide");
-const container = document.querySelector(".container").classList;
-const cardField = document.querySelector(".game-section_container").classList;
+const btnStart = document.querySelector('.btn-start');
+const fieldControls = document.querySelectorAll('.field-control');
+const formFields = document.querySelectorAll('.form__field');
+let gameLevel = [];
+const gameSection = document.querySelector('.game-section-container');
+const gameTable = document.createElement('div'); // тут будет стол с игрой
+const restartBtn = document.querySelector('.restart-btn');
+const container = document.querySelector('.container').classList;
+const cardField = document.querySelector('.game-section-container').classList;
 
 let cards = [];
-
-const winScreen = document.querySelector(".result_screen_win_container");
-const lostScreen = document.querySelector(".result_screen_lost_container");
+const winScreen = document.querySelector('.result-screen-win-container');
+const lostScreen = document.querySelector('.result-screen-lost-container');
 
 // сохранение уровня сложности в глоб сост
 for (let i = 0; i < fieldControls.length; i++) {
-  fieldControls[i].addEventListener("click", () => {
+  fieldControls[i].addEventListener('click', () => {
     console.log(`${fieldControls[i].name}: ${fieldControls[i].value}`);
-    localStorage.setItem("level", fieldControls[i].value);
-    game_level = localStorage.level;
+    localStorage.setItem('level', fieldControls[i].value);
+    gameLevel = localStorage.level;
   });
 }
+formFields.forEach((field) => {
+  field.addEventListener('click', () => {
+    formFields.forEach((item) => item.classList.remove('active'));
+    field.classList.add('active');
+  });
+});
 
-btnStart.addEventListener("click", () => startGame(game_level));
+btnStart.addEventListener('click', () => startGame(gameLevel));
 
 // Запуск игры и выбор сложности принимает изначальную сложность игры
-const startGame = (game_level) => {
+const startGame = (gameLevel) => {
   let firstCard = null;
   let secondCard = null;
   let clickable = true;
 
-  container.toggle("cardsField");
-  cardField.toggle("cardsField");
+  container.toggle('cardsField');
+  cardField.toggle('cardsField');
 
-  const cardsIcons = createIconsArray(game_level);
+  const cardsIcons = createIconsArray(gameLevel);
   const duplicatedCardsIcons = duplicateArray(cardsIcons);
 
   shuffle(duplicatedCardsIcons);
 
   duplicatedCardsIcons.forEach((icon) =>
-    gameTable.append(createGameCard("notFlippedCard", icon))
+    gameTable.append(createGameCard('notFlippedCard', icon))
   );
 
   gameSection.append(gameTable, restartBtn);
 
-  cards.forEach((card, index) => card.addEventListener("click", () => {}));
-
-  function get_elapsed_time_string(total_seconds) {
-    function pretty_time_string(num) {
-      return (num < 10 ? "0" : "") + num;
+  function getElapsedTimeString(totalSeconds) {
+    function prettyTimeString(num) {
+      return (num < 10 ? '0' : '') + num;
     }
 
-    let minutes = Math.floor(total_seconds / 60);
-    total_seconds = total_seconds % 60;
+    let minutes = Math.floor(totalSeconds / 60);
+    totalSeconds = totalSeconds % 60;
 
-    let seconds = Math.floor(total_seconds);
+    let seconds = Math.floor(totalSeconds);
 
-    minutes = pretty_time_string(minutes);
-    seconds = pretty_time_string(seconds);
+    minutes = prettyTimeString(minutes);
+    seconds = prettyTimeString(seconds);
 
-    const currentTimeString = minutes + ":" + seconds;
+    const currentTimeString = minutes + ':' + seconds;
     return currentTimeString;
   }
 
-  let elapsed_seconds = -5;
-  
-  function setTimer(value){
-    setTimeout(function(){
-      $(".timer").text(get_elapsed_time_string(elapsed_seconds));
-    },5000);
+  let elapsedSeconds = -5;
+
+  function setTimer() {
+    setTimeout(function () {
+      // $('.timer').text(getElapsedTimeString(elapsedSeconds));
+      document.querySelector('.timer').innerHTML =
+        getElapsedTimeString(elapsedSeconds);
+    }, 5000);
   }
-  setInterval(function(){
-    setTimer(elapsed_seconds++)
-  },1000);
+  setInterval(function () {
+    setTimer(elapsedSeconds++);
+  }, 1000);
 
-  cards = document.querySelectorAll(".game-card");
+  cards = document.querySelectorAll('.game-card');
 
-  const karty = document.querySelectorAll(".game-card");
-  karty.forEach((karta, index) => karta.classList.add("flip"));
-  karty.forEach((karta, index) =>
+  const karty = document.querySelectorAll('.game-card');
+  karty.forEach((karta) => karta.classList.add('flip'));
+  karty.forEach((karta) =>
     setTimeout(() => {
-      karta.classList.remove("flip");
-	  
+      karta.classList.remove('flip');
     }, 5000)
   );
 
   cards.forEach((card, index) =>
-    card.addEventListener("click", () => {
-      if (clickable === true && !card.classList.contains("successfully")) 
-	  {
-        card.classList.add("flip");
-        if (firstCard == null) 
-		{
+    card.addEventListener('click', () => {
+      if (clickable === true && !card.classList.contains('successfully')) {
+        card.classList.add('flip');
+        if (firstCard === null) {
           firstCard = index;
-        } 
-		else 
-		{
-          if (index != firstCard) 
-		  {
+        } else {
+          if (index !== firstCard) {
             secondCard = index;
             clickable = false;
-	      }
-	    }
-        if ( firstCard != null && secondCard != null && firstCard != secondCard ) 
-	    {
-          if (cards[firstCard].firstElementChild.className === cards[secondCard].firstElementChild.className) 
-	   	  {
-			  setTimeout(() => {
-                cards[firstCard].classList.add("successfully");
-                cards[secondCard].classList.add("successfully");
-	   	    
-                firstCard = null;
-                secondCard = null;
-                clickable = true;
-                }, 500);
-
-			  if (Array.from(cards).every((card) => card.className.includes("flip"))) {
-				gameSection.remove(gameTable);
-				winScreen.style.display = "inherit";
-				setTimeout(500);
-				document.querySelectorAll('.timer')[0].classList.remove("timer");
-			  }
-          } 
-		  else 
-	      {
-		    if (!Array.from(cards).every((card) => card.className.includes("flip"))) {
-			  gameSection.remove(gameTable);
-			  lostScreen.style.display = "inherit";
-			  setTimeout(500);
-			  document.querySelectorAll('.timer')[1].classList.remove("timer");
-		    }
           }
         }
-	  }
+        if (
+          firstCard !== null &&
+          secondCard !== null &&
+          firstCard !== secondCard
+        ) {
+          if (
+            cards[firstCard].firstElementChild.className ===
+            cards[secondCard].firstElementChild.className
+          ) {
+            setTimeout(() => {
+              cards[firstCard].classList.add('successfully');
+              cards[secondCard].classList.add('successfully');
+
+              firstCard = null;
+              secondCard = null;
+              clickable = true;
+            }, 500);
+
+            if (
+              Array.from(cards).every((card) => card.className.includes('flip'))
+            ) {
+              gameSection.parentNode.removeChild(gameSection);
+              winScreen.style.display = 'inherit';
+              setTimeout(() => {
+                document
+                  .querySelectorAll('.timer')[0]
+                  .classList.remove('timer');
+              }, 500);
+            }
+          } else {
+            if (
+              !Array.from(cards).every((card) =>
+                card.className.includes('flip')
+              )
+            ) {
+              gameSection.parentNode.removeChild(gameSection);
+              lostScreen.style.display = 'inherit';
+              setTimeout(() => {
+                document
+                  .querySelectorAll('.timer')[1]
+                  .classList.remove('timer');
+              }, 500);
+            }
+          }
+        }
+      }
     })
   );
 };
@@ -146,161 +159,161 @@ const duplicateArray = (array) =>
 const createIconsArray = (initialCount) => {
   const cardsIcons = [
     {
-      value: "6",
-      suit: "peaks",
+      value: '6',
+      suit: 'peaks',
     },
     {
-      value: "7",
-      suit: "peaks",
+      value: '7',
+      suit: 'peaks',
     },
     {
-      value: "8",
-      suit: "peaks",
+      value: '8',
+      suit: 'peaks',
     },
     {
-      value: "9",
-      suit: "peaks",
+      value: '9',
+      suit: 'peaks',
     },
     {
-      value: "10",
-      suit: "peaks",
+      value: '10',
+      suit: 'peaks',
     },
     {
-      value: "Q",
-      suit: "peaks",
+      value: 'Q',
+      suit: 'peaks',
     },
     {
-      value: "K",
-      suit: "peaks",
+      value: 'K',
+      suit: 'peaks',
     },
     {
-      value: "J",
-      suit: "peaks",
+      value: 'J',
+      suit: 'peaks',
     },
     {
-      value: "A",
-      suit: "peaks",
+      value: 'A',
+      suit: 'peaks',
     },
     {
-      value: "6",
-      suit: "tambourine",
+      value: '6',
+      suit: 'tambourine',
     },
     {
-      value: "7",
-      suit: "tambourine",
+      value: '7',
+      suit: 'tambourine',
     },
     {
-      value: "8",
-      suit: "tambourine",
+      value: '8',
+      suit: 'tambourine',
     },
     {
-      value: "9",
-      suit: "tambourine",
+      value: '9',
+      suit: 'tambourine',
     },
     {
-      value: "10",
-      suit: "tambourine",
+      value: '10',
+      suit: 'tambourine',
     },
     {
-      value: "Q",
-      suit: "tambourine",
+      value: 'Q',
+      suit: 'tambourine',
     },
     {
-      value: "K",
-      suit: "tambourine",
+      value: 'K',
+      suit: 'tambourine',
     },
     {
-      value: "J",
-      suit: "tambourine",
+      value: 'J',
+      suit: 'tambourine',
     },
     {
-      value: "A",
-      suit: "tambourine",
+      value: 'A',
+      suit: 'tambourine',
     },
     {
-      value: "6",
-      suit: "cross",
+      value: '6',
+      suit: 'cross',
     },
     {
-      value: "7",
-      suit: "cross",
+      value: '7',
+      suit: 'cross',
     },
     {
-      value: "8",
-      suit: "cross",
+      value: '8',
+      suit: 'cross',
     },
     {
-      value: "9",
-      suit: "cross",
+      value: '9',
+      suit: 'cross',
     },
     {
-      value: "10",
-      suit: "cross",
+      value: '10',
+      suit: 'cross',
     },
     {
-      value: "Q",
-      suit: "cross",
+      value: 'Q',
+      suit: 'cross',
     },
     {
-      value: "K",
-      suit: "cross",
+      value: 'K',
+      suit: 'cross',
     },
     {
-      value: "J",
-      suit: "cross",
+      value: 'J',
+      suit: 'cross',
     },
     {
-      value: "A",
-      suit: "cross",
+      value: 'A',
+      suit: 'cross',
     },
     {
-      value: "6",
-      suit: "hearts",
+      value: '6',
+      suit: 'hearts',
     },
     {
-      value: "7",
-      suit: "hearts",
+      value: '7',
+      suit: 'hearts',
     },
     {
-      value: "8",
-      suit: "hearts",
+      value: '8',
+      suit: 'hearts',
     },
     {
-      value: "9",
-      suit: "hearts",
+      value: '9',
+      suit: 'hearts',
     },
     {
-      value: "10",
-      suit: "hearts",
+      value: '10',
+      suit: 'hearts',
     },
     {
-      value: "Q",
-      suit: "hearts",
+      value: 'Q',
+      suit: 'hearts',
     },
     {
-      value: "K",
-      suit: "hearts",
+      value: 'K',
+      suit: 'hearts',
     },
     {
-      value: "J",
-      suit: "hearts",
+      value: 'J',
+      suit: 'hearts',
     },
     {
-      value: "A",
-      suit: "hearts",
+      value: 'A',
+      suit: 'hearts',
     },
   ];
 
   switch (initialCount) {
-    case "6":
+    case '6':
       shuffle(cardsIcons);
       return cardsIcons.slice(0, 3);
 
-    case "12":
+    case '12':
       shuffle(cardsIcons);
       return cardsIcons.slice(0, 6);
 
-    case "18":
+    case '18':
       shuffle(cardsIcons);
       return cardsIcons.slice(0, 9);
 
@@ -315,7 +328,7 @@ const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
 
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
@@ -328,15 +341,14 @@ const shuffle = (array) => {
   return array;
 };
 
-
 //Создание карт
 
 const createGameCard = (defaultIcon, flippedCardIcon) => {
-  const card = document.createElement("div");
-  card.classList.add("game-card");
+  const card = document.createElement('div');
+  card.classList.add('game-card');
 
-  const notFlippedCardI = document.createElement("i");
-  const flippedCardI = document.createElement("i");
+  const notFlippedCardI = document.createElement('i');
+  const flippedCardI = document.createElement('i');
 
   notFlippedCardI.classList.add(`notFlippedCard`);
   flippedCardI.innerHTML = `${flippedCardIcon.value}`;
@@ -353,6 +365,6 @@ const createGameCard = (defaultIcon, flippedCardIcon) => {
 
 gameSection.append(gameTable, restartBtn);
 
-document.querySelectorAll(".restart_btn").forEach((button) => {
-  button.addEventListener("click", () => window.location.reload());
+document.querySelectorAll('.restart-btn').forEach((button) => {
+  button.addEventListener('click', () => window.location.reload());
 });

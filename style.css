@@ -15,7 +15,7 @@ body {
           align-items: center;
   height: 100vh;
   background-color: #004980;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
 }
 
 .container {
@@ -38,7 +38,7 @@ body {
           align-items: center;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
@@ -50,7 +50,7 @@ input[type="radio"] {
   margin-top: 48px;
 }
 
-.label__text {
+.label-text {
   font-style: normal;
   width: 208px;
   height: 96px;
@@ -60,8 +60,8 @@ input[type="radio"] {
   color: #004980;
 }
 
-.field__control,
-.game_lever_text {
+.field-control,
+.game-lever-text {
   color: #0080c1;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -75,7 +75,7 @@ input[type="radio"] {
   top: 354px;
   background: #ffffff;
   border-radius: 12px;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -87,17 +87,17 @@ input[type="radio"] {
   text-align: center;
 }
 
-.field__control,
-.game_lever_text:hover {
+.field-control,
+.game-lever-text:hover {
   color: #8c8b8b;
 }
 
-.field__control,
-.game_lever_text:checked {
+.field-control,
+.game-lever-text:checked {
   color: #414141;
 }
 
-.btn__start {
+.btn-start {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -134,7 +134,7 @@ input[type="radio"] {
           justify-content: center;
 }
 
-.game-section_container div {
+.game-section-container div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -146,7 +146,13 @@ input[type="radio"] {
   margin-left: 26px;
 }
 
-.game-section_top {
+.form-field.active {
+  background: aquamarine;
+  border: 2px #000 solid;
+  border-radius: 15px;
+}
+
+.game-section-top {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -350,7 +356,7 @@ input[type="radio"] {
   height: 100%;
 }
 
-.restart_btn {
+.restart-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -376,7 +382,7 @@ input[type="radio"] {
   margin-bottom: 46px;
 }
 
-.game-card_flip {
+.game-card-flip {
   background: #5dc6ff !important;
   -webkit-transform: perspective(100px), rotateY(180deg);
           transform: perspective(100px), rotateY(180deg);
@@ -392,28 +398,30 @@ input[type="radio"] {
 
 .game-card.successfully {
   background: #34c957;
+  border-radius: 12px;
 }
 
 .game-card i + i:hover {
   background: #c2f5ff;
+  border-radius: 12px;
 }
 
-.result_screen_win_container {
+.result-screen-win-container {
   display: none;
   background: #c2f5ff;
   border-radius: 12px;
   background-position: center;
 }
 
-.result_screen_lost_container {
+.result-screen-lost-container {
   display: none;
   background: #c2f5ff;
   border-radius: 12px;
   background-position: center;
 }
 
-.result_screen_win,
-.result_screen_lost {
+.result-screen-win,
+.result-screen-lost {
   width: 480px;
   height: 459px;
   background: #c2f5ff;
@@ -426,20 +434,20 @@ input[type="radio"] {
           justify-content: center;
 }
 
-.win_screen,
-.lost_screen {
+.win-screen,
+.lost-screen {
   display: -ms-grid;
   display: grid;
   justify-items: center;
 }
 
-.screen_img {
+.screen-img {
   margin-top: 30px;
   margin-bottom: 4px;
 }
 
-.win_screen_title,
-.lost_screen_title {
+.win-screen-title,
+.lost-screen-title {
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
@@ -447,8 +455,8 @@ input[type="radio"] {
   margin-bottom: 28px;
 }
 
-.win_screen_subtitle,
-.lost_screen_subtitle {
+.win-screen-subtitle,
+.lost-screen-subtitle {
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
