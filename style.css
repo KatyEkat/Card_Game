@@ -15,7 +15,7 @@ body {
           align-items: center;
   height: 100vh;
   background-color: #004980;
-  font-family: 'Montserrat';
+  font-family: Montserrat, sans-serif;
 }
 
 .container {
@@ -73,14 +73,13 @@ input[type='radio'] {
   height: 98px;
   left: 585px;
   top: 354px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 12px;
-  font-family: 'Montserrat';
+  font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -89,12 +88,12 @@ input[type='radio'] {
 
 .field-control,
 .game-lever-text:hover {
-  color: #8c8b8b;
+  color: lightgray;
 }
 
 .field-control,
 .game-lever-text:checked {
-  color: #414141;
+  color: grey;
 }
 
 .btn-start {
@@ -111,7 +110,7 @@ input[type='radio'] {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #ffffff;
+  color: #fff;
   width: 246px;
   height: 50px;
   left: 389px;
@@ -171,17 +170,17 @@ input[type='radio'] {
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  color: #ffffff;
+  color: #fff;
 }
 
-.cardsField {
+.cards-field {
   display: none;
 }
 
 .game-card {
   width: 95px;
   height: 133px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 4px;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
@@ -195,7 +194,7 @@ input[type='radio'] {
   display: block;
 }
 
-.flippedCard {
+.flipped-card {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -203,7 +202,7 @@ input[type='radio'] {
 
 .peaks {
   position: relative;
-  background-image: url(./img/peaks.svg);
+  background-image: url("./img/peaks.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -214,7 +213,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/peaks.svg);
+  background-image: url("./img/peaks.svg");
   background-repeat: no-repeat;
   background-size: 12px auto;
   background-position: left bottom;
@@ -229,7 +228,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/peaks.svg);
+  background-image: url("./img/peaks.svg");
   background-repeat: no-repeat;
   background-size: 12px auto;
   -webkit-transform: rotate(180deg);
@@ -240,7 +239,7 @@ input[type='radio'] {
 
 .tambourine {
   position: relative;
-  background-image: url(./img/tambourine.svg);
+  background-image: url("./img/tambourine.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -251,7 +250,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/tambourine.svg);
+  background-image: url("./img/tambourine.svg");
   background-repeat: no-repeat;
   background-size: 12px auto;
   background-position: left bottom;
@@ -266,7 +265,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/tambourine.svg);
+  background-image: url("./img/tambourine.svg");
   background-repeat: no-repeat;
   background-size: 12px auto;
   -webkit-transform: rotate(180deg);
@@ -277,7 +276,7 @@ input[type='radio'] {
 
 .cross {
   position: relative;
-  background-image: url(./img/cross.svg);
+  background-image: url("./img/cross.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -288,7 +287,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/cross.svg);
+  background-image: url("./img/cross.svg");
   background-repeat: no-repeat;
   background-size: 12px auto;
   background-position: left bottom;
@@ -303,7 +302,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/cross.svg);
+  background-image: url("./img/cross.svg");
   background-repeat: no-repeat;
   background-size: 12px auto;
   -webkit-transform: rotate(180deg);
@@ -314,7 +313,7 @@ input[type='radio'] {
 
 .hearts {
   position: relative;
-  background-image: url(./img/hearts.svg);
+  background-image: url("./img/hearts.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -325,7 +324,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/hearts.svg);
+  background-image: url("./img/hearts.svg");
   background-repeat: no-repeat;
   background-size: 12px auto;
   background-position: left bottom;
@@ -340,7 +339,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/hearts.svg);
+  background-image: url("./img/hearts.svg");
   background-repeat: no-repeat;
   background-size: 12px auto;
   -webkit-transform: rotate(180deg);
@@ -349,7 +348,7 @@ input[type='radio'] {
   right: 12px;
 }
 
-.notFlippedCard {
+.not-flipped-card {
   background-image: url("./img/notFlippedCard.svg");
   background-repeat: no-repeat;
   width: 100%;
@@ -370,7 +369,7 @@ input[type='radio'] {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #ffffff;
+  color: #fff;
   width: 246px;
   height: 50px;
   left: 389px;
@@ -397,7 +396,7 @@ input[type='radio'] {
 }
 
 .game-card.successfully {
-  background: #34c957;
+  background: lightgreen;
   border-radius: 12px;
 }
 

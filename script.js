@@ -35,8 +35,8 @@ const startGame = (gameLevel) => {
   let secondCard = null;
   let clickable = true;
 
-  container.toggle('cardsField');
-  cardField.toggle('cardsField');
+  container.toggle('cards-field');
+  cardField.toggle('cards-field');
 
   const cardsIcons = createIconsArray(gameLevel);
   const duplicatedCardsIcons = duplicateArray(cardsIcons);
@@ -122,7 +122,7 @@ const startGame = (gameLevel) => {
             if (
               Array.from(cards).every((card) => card.className.includes('flip'))
             ) {
-              gameSection.parentNode.removeChild(gameSection);
+              gameSection.remove(gameTable);
               winScreen.style.display = 'inherit';
               setTimeout(() => {
                 document
@@ -136,7 +136,7 @@ const startGame = (gameLevel) => {
                 card.className.includes('flip')
               )
             ) {
-              gameSection.parentNode.removeChild(gameSection);
+              gameSection.remove(gameTable);
               lostScreen.style.display = 'inherit';
               setTimeout(() => {
                 document
@@ -350,10 +350,10 @@ const createGameCard = (defaultIcon, flippedCardIcon) => {
   const notFlippedCardI = document.createElement('i');
   const flippedCardI = document.createElement('i');
 
-  notFlippedCardI.classList.add(`notFlippedCard`);
+  notFlippedCardI.classList.add(`not-flipped-card`);
   flippedCardI.innerHTML = `${flippedCardIcon.value}`;
   flippedCardI.classList.add(
-    `flippedCard`,
+    `flipped-card`,
     `${flippedCardIcon.suit}`,
     `${flippedCardIcon.value}`
   );

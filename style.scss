@@ -9,7 +9,7 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #004980;
-  font-family: 'Montserrat';
+  font-family: Montserrat, sans-serif;
 }
 
 .container {
@@ -54,39 +54,36 @@ input[type='radio'] {
   height: 98px;
   left: 585px;
   top: 354px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 12px;
-  font-family: 'Montserrat';
+  font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  display: flex;
   align-items: center;
   text-align: center;
 }
 
 .field-control,
 .game-lever-text:hover {
-  color: rgb(140, 139, 139);
+  color: lightgray;
 }
 
 .field-control,
 .game-lever-text:checked {
-  color: rgb(65, 65, 65);
+  color: grey;
 }
 
 .btn-start {
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #ffffff;
-
+  color: #fff;
   width: 246px;
   height: 50px;
   left: 389px;
@@ -96,8 +93,6 @@ input[type='radio'] {
   border: 1px solid #7ac100;
   margin-top: 67px;
 }
-
-//Стили для карт и игрового пространства
 
 .game-table {
   max-width: 500px;
@@ -115,7 +110,6 @@ input[type='radio'] {
   margin-left: 26px;
 }
 
-// active level selector class
 .form-field {
   &.active {
     background: aquamarine;
@@ -137,17 +131,17 @@ input[type='radio'] {
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  color: #ffffff;
+  color: #fff;
 }
 
-.cardsField {
+.cards-field {
   display: none;
 }
 
 .game-card {
   width: 95px;
   height: 133px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 4px;
   transition: all 0.2s linear;
 }
@@ -160,14 +154,15 @@ input[type='radio'] {
   display: block;
 }
 
-.flippedCard {
+.flipped-card {
   width: 100%;
   height: 100%;
   position: absolute;
 }
+
 .peaks {
   position: relative;
-  background-image: url(./img/peaks.svg);
+  background-image: url('./img/peaks.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -178,7 +173,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/peaks.svg);
+  background-image: url('./img/peaks.svg');
   background-repeat: no-repeat;
   background-size: 12px auto;
   background-position: left bottom;
@@ -192,7 +187,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/peaks.svg);
+  background-image: url('./img/peaks.svg');
   background-repeat: no-repeat;
   background-size: 12px auto;
   transform: rotate(180deg);
@@ -202,7 +197,7 @@ input[type='radio'] {
 
 .tambourine {
   position: relative;
-  background-image: url(./img/tambourine.svg);
+  background-image: url('./img/tambourine.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -213,7 +208,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/tambourine.svg);
+  background-image: url('./img/tambourine.svg');
   background-repeat: no-repeat;
   background-size: 12px auto;
   background-position: left bottom;
@@ -227,7 +222,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/tambourine.svg);
+  background-image: url('./img/tambourine.svg');
   background-repeat: no-repeat;
   background-size: 12px auto;
   transform: rotate(180deg);
@@ -237,7 +232,7 @@ input[type='radio'] {
 
 .cross {
   position: relative;
-  background-image: url(./img/cross.svg);
+  background-image: url('./img/cross.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -248,7 +243,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/cross.svg);
+  background-image: url('./img/cross.svg');
   background-repeat: no-repeat;
   background-size: 12px auto;
   background-position: left bottom;
@@ -262,7 +257,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/cross.svg);
+  background-image: url('./img/cross.svg');
   background-repeat: no-repeat;
   background-size: 12px auto;
   transform: rotate(180deg);
@@ -272,7 +267,7 @@ input[type='radio'] {
 
 .hearts {
   position: relative;
-  background-image: url(./img/hearts.svg);
+  background-image: url('./img/hearts.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -283,7 +278,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/hearts.svg);
+  background-image: url('./img/hearts.svg');
   background-repeat: no-repeat;
   background-size: 12px auto;
   background-position: left bottom;
@@ -297,7 +292,7 @@ input[type='radio'] {
   position: absolute;
   width: 14px;
   height: 32px;
-  background-image: url(./img/hearts.svg);
+  background-image: url('./img/hearts.svg');
   background-repeat: no-repeat;
   background-size: 12px auto;
   transform: rotate(180deg);
@@ -305,7 +300,7 @@ input[type='radio'] {
   right: 12px;
 }
 
-.notFlippedCard {
+.not-flipped-card {
   background-image: url('./img/notFlippedCard.svg');
   background-repeat: no-repeat;
   width: 100%;
@@ -320,8 +315,7 @@ input[type='radio'] {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #ffffff;
-
+  color: #fff;
   width: 246px;
   height: 50px;
   left: 389px;
@@ -332,8 +326,6 @@ input[type='radio'] {
   margin-top: 52px;
   margin-bottom: 46px;
 }
-
-//переворачивание карт
 
 .game-card-flip {
   background: #5dc6ff !important;
@@ -349,15 +341,15 @@ input[type='radio'] {
 }
 
 .game-card.successfully {
-  background: rgb(52, 201, 87);
+  background: lightgreen;
   border-radius: 12px;
 }
+
 .game-card i + i:hover {
   background: #c2f5ff;
   border-radius: 12px;
 }
 
-// WIN AND LOST SCREENS
 .result-screen-win-container {
   display: none;
   background: #c2f5ff;
@@ -382,6 +374,7 @@ input[type='radio'] {
   display: grid;
   justify-content: center;
 }
+
 .win-screen,
 .lost-screen {
   display: grid;
