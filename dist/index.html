@@ -1,1 +1,97 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Levels</title><link rel="stylesheet" href="style.css"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"/><script defer="defer" src="bundle.js"></script></head><body><form class="container"><label class="label__text">Choose the level:</label><div class="field"><div class="form__field"><label class="game_lever_text" for="game_level_easy">1</label> <input id="game_level_easy" name="game_level" class="field__control" type="radio" value="6"/></div><label class="game_lever_text" for="game_level_normal">2</label> <input id="game_level_normal" name="game_level" class="field__control" type="radio" value="12"/> <label class="game_lever_text" for="game_level_hard">3</label> <input id="game_level_hard" name="game_level" class="field__control" type="radio" value="18"/></div><div class="btn__start">Start</div></form><div class="game-section_container cardsField"><div class="game-section_top"><div class="timer">00.00</div><div class="restart_btn">Restart</div></div><script src="script.js"></script><script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Levels</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  <script defer src="bundle.js"></script></head>
+
+  <body>
+    <form class="container">
+      <label class="label-text">Choose the level:</label>
+      <div class="field">
+        <div class="form-field">
+          <label class="game-lever-text" for="game_level_easy">1</label>
+          <input
+            id="game_level_easy"
+            name="game_level"
+            class="field-control"
+            type="radio"
+            value="6"
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="game-lever-text" for="game_level_normal">2</label>
+          <input
+            id="game_level_normal"
+            name="game_level"
+            class="field-control"
+            type="radio"
+            value="12"
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="game-lever-text" for="game_level_hard">3</label>
+          <input
+            id="game_level_hard"
+            name="game_level"
+            class="field-control"
+            type="radio"
+            value="18"
+          />
+        </div>
+      </div>
+      <div class="btn-start">Start</div>
+    </form>
+
+    <!-- Генератор карт -->
+    <div class="game-section-container cards-field">
+      <div class="game-section-top">
+        <div class="timer">00.00</div>
+        <div class="restart-btn">Restart</div>
+      </div>
+    </div>
+
+    <!-- Game results  -->
+    <div class="result-screen-win-container">
+      <div class="result-screen-win">
+        <div class="win-screen">
+          <img class="screen-img" src="./img/won.svg" alt="" />
+          <h1 class="win-screen-title">You won!</h1>
+          <h2 class="win-screen-subtitle">Time spent:</h2>
+          <div class="timer">00.00</div>
+        </div>
+        <div class="restart-btn">Restart</div>
+      </div>
+    </div>
+
+    <div class="result-screen-lost-container">
+      <div class="result-screen-lost">
+        <div class="lost-screen">
+          <img class="screen-img" src="./img/lost.svg" alt="" />
+          <h1 class="lost-screen-title">You lost! :(</h1>
+          <h2 class="lost-screen-subtitle">Time spent:</h2>
+          <div class="timer">00.00</div>
+        </div>
+        <div class="restart-btn">Restart</div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

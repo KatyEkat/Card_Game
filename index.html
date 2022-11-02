@@ -16,70 +16,74 @@
 
   <body>
     <form class="container">
-      <label class="label__text">Choose the level:</label>
+      <label class="label-text">Choose the level:</label>
       <div class="field">
-        <div class="form__field">
-          <label class="game_lever_text" for="game_level_easy">1</label>
+        <div class="form-field">
+          <label class="game-lever-text" for="game_level_easy">1</label>
           <input
             id="game_level_easy"
             name="game_level"
-            class="field__control"
+            class="field-control"
             type="radio"
             value="6"
           />
         </div>
 
-        <label class="game_lever_text" for="game_level_normal">2</label>
-        <input
-          id="game_level_normal"
-          name="game_level"
-          class="field__control"
-          type="radio"
-          value="12"
-        />
+        <div class="form-field">
+          <label class="game-lever-text" for="game_level_normal">2</label>
+          <input
+            id="game_level_normal"
+            name="game_level"
+            class="field-control"
+            type="radio"
+            value="12"
+          />
+        </div>
 
-        <label class="game_lever_text" for="game_level_hard">3</label>
-        <input
-          id="game_level_hard"
-          name="game_level"
-          class="field__control"
-          type="radio"
-          value="18"
-        />
+        <div class="form-field">
+          <label class="game-lever-text" for="game_level_hard">3</label>
+          <input
+            id="game_level_hard"
+            name="game_level"
+            class="field-control"
+            type="radio"
+            value="18"
+          />
+        </div>
       </div>
-      <div class="btn__start">Start</div>
+      <div class="btn-start">Start</div>
     </form>
 
     <!-- Генератор карт -->
-    <div class="game-section_container cardsField">
-      <div class="game-section_top">
+    <div class="game-section-container cards-field">
+      <div class="game-section-top">
         <div class="timer">00.00</div>
-        <div class="restart_btn">Restart</div>
+        <div class="restart-btn">Restart</div>
       </div>
     </div>
 
     <!-- Game results  -->
-    <div class="result_screen_win_container">
-      <div class="result_screen_win">
-        <div class="win_screen">
-          <img class="screen_img" src="./img/won.svg" alt="" />
-          <h1 class="win_screen_title">You won!</h1>
-          <h2 class="win_screen_subtitle">Time spent:</h2>
+    <div class="result-screen-win-container">
+      <div class="result-screen-win">
+        <div class="win-screen">
+          <img class="screen-img" src="./img/won.svg" alt="" />
+          <h1 class="win-screen-title">You won!</h1>
+          <h2 class="win-screen-subtitle">Time spent:</h2>
           <div class="timer">00.00</div>
         </div>
-        <div class="restart_btn">Restart</div>
+        <div class="restart-btn">Restart</div>
       </div>
     </div>
 
-    <div class="result_screen_lost_container">
-      <div class="result_screen_lost">
-        <div class="lost_screen">
-          <img class="screen_img" src="./img/lost.svg" alt="" />
-          <h1 class="lost_screen_title">You lost! :(</h1>
-          <h2 class="lost_screen_subtitle">Time spent:</h2>
+    <div class="result-screen-lost-container">
+      <div class="result-screen-lost">
+        <div class="lost-screen">
+          <img class="screen-img" src="./img/lost.svg" alt="" />
+          <h1 class="lost-screen-title">You lost! :(</h1>
+          <h2 class="lost-screen-subtitle">Time spent:</h2>
           <div class="timer">00.00</div>
         </div>
-        <div class="restart_btn">Restart</div>
+        <div class="restart-btn">Restart</div>
       </div>
     </div>
 
