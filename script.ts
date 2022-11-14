@@ -1,18 +1,32 @@
-const btnStart = document.querySelector('.btn-start');
-const fieldControls = document.querySelectorAll('.field-control');
-const formFields = document.querySelectorAll('.form__field');
-let gameLevel = [];
-const gameSection = document.querySelector('.game-section-container');
-const gameTable = document.createElement('div'); // тут будет стол с игрой
-const restartBtn = document.querySelector('.restart-btn');
-const container = document.querySelector('.container').classList;
-const cardField = document.querySelector('.game-section-container').classList;
+import './style.scss';
 
-let cards = [];
+const btnStart: Element = document.querySelector('.btn-start');
+const fieldControls: any = document.querySelectorAll('.field-control');
+const formFields = document.querySelectorAll('.form__field');
+let gameLevel: Number = 0;
+const gameSection: HTMLInputElement = document.querySelector(
+  '.game-section-container'
+);
+const gameTable: HTMLElement = document.createElement('div'); // тут будет стол с игрой
+const restartBtn: HTMLInputElement = document.querySelector('.restart-btn');
+const container: HTMLInputElement =
+  document.querySelector('.container').classList;
+const cardField: HTMLInputElement = document.querySelector(
+  '.game-section-container'
+).classList;
+
+let cards: String[] = [];
 const winScreen = document.querySelector('.result-screen-win-container');
 const lostScreen = document.querySelector('.result-screen-lost-container');
 
 // сохранение уровня сложности в глоб сост
+// fieldControls.forEach((control) => {
+//   control.addEventListener('click', () => {
+//     const level = (control as HTMLInputElement).value;
+//     localStorage.setItem('level', level);
+//     gameLevel = Number(level);
+//   });
+// });
 for (let i = 0; i < fieldControls.length; i++) {
   fieldControls[i].addEventListener('click', () => {
     console.log(`${fieldControls[i].name}: ${fieldControls[i].value}`);
@@ -31,8 +45,8 @@ btnStart.addEventListener('click', () => startGame(gameLevel));
 
 // Запуск игры и выбор сложности принимает изначальную сложность игры
 const startGame = (gameLevel) => {
-  let firstCard = null;
-  let secondCard = null;
+  let firstCard: null = null;
+  let secondCard: null = null;
   let clickable = true;
 
   container.toggle('cards-field');
@@ -66,7 +80,7 @@ const startGame = (gameLevel) => {
     return currentTimeString;
   }
 
-  let elapsedSeconds = -5;
+  let elapsedSeconds: Number = -5;
 
   function setTimer() {
     setTimeout(function () {
