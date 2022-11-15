@@ -1,21 +1,20 @@
 import './style.scss';
 
-const btnStart: Element = document.querySelector('.btn-start');
+const btnStart = document.querySelector('.btn-start') as HTMLElement;
 const fieldControls: any = document.querySelectorAll('.field-control');
 const formFields = document.querySelectorAll('.form__field');
 let gameLevel: Number = 0;
-const gameSection: HTMLInputElement = document.querySelector(
+const gameSection = document.querySelector(
   '.game-section-container'
-);
-const gameTable: HTMLElement = document.createElement('div'); // тут будет стол с игрой
-const restartBtn: HTMLInputElement = document.querySelector('.restart-btn');
-const container: HTMLInputElement =
-  document.querySelector('.container').classList;
-const cardField: HTMLInputElement = document.querySelector(
+) as HTMLElement;
+const gameTable = document.createElement('div') as HTMLElement;
+const restartBtn = document.querySelector('.restart-btn') as HTMLElement;
+const container = document.querySelector('.container') as HTMLElement;
+const cardField = document.querySelector(
   '.game-section-container'
-).classList;
+) as HTMLElement;
 
-let cards: String[] = [];
+let cards: any = [];
 const winScreen = document.querySelector('.result-screen-win-container');
 const lostScreen = document.querySelector('.result-screen-lost-container');
 
@@ -44,27 +43,27 @@ formFields.forEach((field) => {
 btnStart.addEventListener('click', () => startGame(gameLevel));
 
 // Запуск игры и выбор сложности принимает изначальную сложность игры
-const startGame = (gameLevel) => {
-  let firstCard: null = null;
-  let secondCard: null = null;
+const startGame = (gameLevel: Number) => {
+  let firstCard: any = null;
+  let secondCard: any = null;
   let clickable = true;
 
   container.toggle('cards-field');
   cardField.toggle('cards-field');
 
   const cardsIcons = createIconsArray(gameLevel);
-  const duplicatedCardsIcons = duplicateArray(cardsIcons);
+  const duplicatedCardsIcons: any = duplicateArray(cardsIcons);
 
   shuffle(duplicatedCardsIcons);
 
-  duplicatedCardsIcons.forEach((icon) =>
+  duplicatedCardsIcons.forEach((icon: any) =>
     gameTable.append(createGameCard('notFlippedCard', icon))
   );
 
   gameSection.append(gameTable, restartBtn);
 
-  function getElapsedTimeString(totalSeconds) {
-    function prettyTimeString(num) {
+  function getElapsedTimeString(totalSeconds: any) {
+    function prettyTimeString(num: Number) {
       return (num < 10 ? '0' : '') + num;
     }
 
@@ -103,7 +102,7 @@ const startGame = (gameLevel) => {
     }, 5000)
   );
 
-  cards.forEach((card, index) =>
+  cards.forEach((card, index: string) =>
     card.addEventListener('click', () => {
       if (clickable === true && !card.classList.contains('successfully')) {
         card.classList.add('flip');
@@ -167,10 +166,10 @@ const startGame = (gameLevel) => {
 
 // Карточки для игры
 
-const duplicateArray = (array) =>
+const duplicateArray = (array: readonly []) =>
   array.reduce((res, current) => res.concat([current, current]), []);
 
-const createIconsArray = (initialCount) => {
+const createIconsArray = (initialCount: String) => {
   const cardsIcons = [
     {
       value: '6',
@@ -338,7 +337,7 @@ const createIconsArray = (initialCount) => {
 
 // Перемешиваем карты
 
-const shuffle = (array) => {
+const shuffle = (array: Object[]) => {
   let currentIndex = array.length,
     randomIndex;
 
@@ -357,7 +356,7 @@ const shuffle = (array) => {
 
 //Создание карт
 
-const createGameCard = (defaultIcon, flippedCardIcon) => {
+const createGameCard = (defaultIcon: any, flippedCardIcon: any) => {
   const card = document.createElement('div');
   card.classList.add('game-card');
 
