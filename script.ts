@@ -1,18 +1,31 @@
-const btnStart = document.querySelector('.btn-start');
-const fieldControls = document.querySelectorAll('.field-control');
-const formFields = document.querySelectorAll('.form__field');
-let gameLevel = [];
-const gameSection = document.querySelector('.game-section-container');
-const gameTable = document.createElement('div'); // тут будет стол с игрой
-const restartBtn = document.querySelector('.restart-btn');
-const container = document.querySelector('.container').classList;
-const cardField = document.querySelector('.game-section-container').classList;
+import './style.scss';
 
-let cards = [];
-const winScreen = document.querySelector('.result-screen-win-container');
-const lostScreen = document.querySelector('.result-screen-lost-container');
+const btnStart = document.querySelector('.btn-start') as HTMLElement;
+const fieldControls: any = document.querySelectorAll('.field-control');
+const formFields = document.querySelectorAll('.form__field');
+let gameLevel: Number = 0;
+const gameSection = document.querySelector(
+  '.game-section-container'
+) as HTMLElement;
+const gameTable = document.createElement('div') as HTMLElement;
+const restartBtn = document.querySelector('.restart-btn') as HTMLElement;
+const container = document.querySelector('.container') as HTMLElement;
+const cardField = document.querySelector(
+  '.game-section-container'
+) as HTMLElement;
+
+let cards: any = [];
+const winScreen = document.querySelector('.result-screen-win-container')as HTMLElement;
+const lostScreen = document.querySelector('.result-screen-lost-container') as HTMLElement;
 
 // сохранение уровня сложности в глоб сост
+// fieldControls.forEach((control) => {
+//   control.addEventListener('click', () => {
+//     const level = (control as HTMLInputElement).value;
+//     localStorage.setItem('level', level);
+//     gameLevel = Number(level);
+//   });
+// });
 for (let i = 0; i < fieldControls.length; i++) {
   fieldControls[i].addEventListener('click', () => {
     console.log(`${fieldControls[i].name}: ${fieldControls[i].value}`);
@@ -30,34 +43,34 @@ formFields.forEach((field) => {
 btnStart.addEventListener('click', () => startGame(gameLevel));
 
 // Запуск игры и выбор сложности принимает изначальную сложность игры
-const startGame = (gameLevel) => {
-  let firstCard = null;
-  let secondCard = null;
+const startGame = (gameLevel: Number) => {
+  let firstCard: any = null;
+  let secondCard: any = null;
   let clickable = true;
 
-  container.toggle('cards-field');
-  cardField.toggle('cards-field');
+  container.classList.toggle('cards-field');
+  cardField.classList.toggle('cards-field');
 
-  const cardsIcons = createIconsArray(gameLevel);
-  const duplicatedCardsIcons = duplicateArray(cardsIcons);
+  const cardsIcons: any = createIconsArray(gameLevel);
+  const duplicatedCardsIcons: any = duplicateArray(cardsIcons);
 
   shuffle(duplicatedCardsIcons);
 
-  duplicatedCardsIcons.forEach((icon) =>
+  duplicatedCardsIcons.forEach((icon: any) =>
     gameTable.append(createGameCard('notFlippedCard', icon))
   );
 
   gameSection.append(gameTable, restartBtn);
 
-  function getElapsedTimeString(totalSeconds) {
-    function prettyTimeString(num) {
+  function getElapsedTimeString(totalSeconds: any) {
+    function prettyTimeString(num: Number) {
       return (num < 10 ? '0' : '') + num;
     }
 
-    let minutes = Math.floor(totalSeconds / 60);
+    let minutes: any = Math.floor(totalSeconds / 60);
     totalSeconds = totalSeconds % 60;
 
-    let seconds = Math.floor(totalSeconds);
+    let seconds: any = Math.floor(totalSeconds);
 
     minutes = prettyTimeString(minutes);
     seconds = prettyTimeString(seconds);
@@ -68,11 +81,15 @@ const startGame = (gameLevel) => {
 
   let elapsedSeconds = -5;
 
-  function setTimer() {
+  function setTimer(elapsedSeconds:any) {
+    // setTimeout(function () {
+    //   // $('.timer').text(getElapsedTimeString(elapsedSeconds));
+    //   document.querySelector('.timer').innerHTML =
+    //     getElapsedTimeString(elapsedSeconds);
+    // }, 5000);
     setTimeout(function () {
-      // $('.timer').text(getElapsedTimeString(elapsedSeconds));
-      document.querySelector('.timer').innerHTML =
-        getElapsedTimeString(elapsedSeconds);
+      const timer = document.querySelector('.timer') as HTMLElement;
+      timer.innerHTML = getElapsedTimeString(elapsedSeconds);
     }, 5000);
   }
   setInterval(function () {
@@ -89,7 +106,7 @@ const startGame = (gameLevel) => {
     }, 5000)
   );
 
-  cards.forEach((card, index) =>
+  cards.forEach((card: any, index: string) =>
     card.addEventListener('click', () => {
       if (clickable === true && !card.classList.contains('successfully')) {
         card.classList.add('flip');
@@ -120,7 +137,7 @@ const startGame = (gameLevel) => {
             }, 500);
 
             if (
-              Array.from(cards).every((card) => card.className.includes('flip'))
+              Array.from(cards).every((card: any) => card.className.includes('flip'))
             ) {
               gameSection.remove(gameTable);
               winScreen.style.display = 'inherit';
@@ -132,7 +149,7 @@ const startGame = (gameLevel) => {
             }
           } else {
             if (
-              !Array.from(cards).every((card) =>
+              !Array.from(cards).every((card: any) =>
                 card.className.includes('flip')
               )
             ) {
@@ -153,10 +170,10 @@ const startGame = (gameLevel) => {
 
 // Карточки для игры
 
-const duplicateArray = (array) =>
+const duplicateArray = (array: readonly []) =>
   array.reduce((res, current) => res.concat([current, current]), []);
 
-const createIconsArray = (initialCount) => {
+const createIconsArray = (initialCount: any) => {
   const cardsIcons = [
     {
       value: '6',
@@ -324,7 +341,7 @@ const createIconsArray = (initialCount) => {
 
 // Перемешиваем карты
 
-const shuffle = (array) => {
+const shuffle = (array: Object[]) => {
   let currentIndex = array.length,
     randomIndex;
 
@@ -343,7 +360,7 @@ const shuffle = (array) => {
 
 //Создание карт
 
-const createGameCard = (defaultIcon, flippedCardIcon) => {
+const createGameCard = (defaultIcon: any, flippedCardIcon: any) => {
   const card = document.createElement('div');
   card.classList.add('game-card');
 
