@@ -1,25 +1,25 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-  "extends": ["eslint:recommended", "prettier"],
-  "plugins": ["prettier"],
-  "parserOptions": {
-    "ecmaVersion": 2020
-  },
-  "rules": {
-    "prettier/prettier": [
-      "warn",
-      {
-        "endOfLine": "auto",
-        "printWidth": 80,
-        "singleQuote": true,
-        "tabWidth": 2
-      }
-    ],
-    "camelcase": ["error"],
-    "eqeqeq": ["error", "always"]
-  }
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": ["eslint:recommended", "prettier"],
+    "plugins": ["prettier"],
+    "parserOptions": {
+        "ecmaVersion": 2020
+    },
+    "rules": {
+        "prettier/prettier": [
+            "warn",
+            {
+                "endOfLine": "auto",
+                "printWidth": 80,
+                "singleQuote": true,
+                "tabWidth": 2
+            }
+        ],
+        "camelcase": ["error"],
+        "eqeqeq": ["error", "always"]
+    }
 }
