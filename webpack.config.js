@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
-  entry: './script.ts',
+  entry: './script.js',
   mode: isProduction ? 'production' : 'development',
 
   output: {
@@ -16,15 +16,7 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-      },
+      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'scss-loader'] },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
@@ -35,9 +27,6 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.ts', '.js'],
-  },
   plugins: [
     new CopyPlugin({
       patterns: [{ from: 'static', to: 'static' }],
@@ -45,9 +34,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
-    new MiniCssExtractPlugin({
-      filename: 'style.css',
-    }),
+    new MiniCssExtractPlugin(),
   ],
   optimization: {
     minimizer: ['...', new CssMinimizerPlugin()],
