@@ -23,13 +23,7 @@ const lostScreen = document.querySelector(
 ) as HTMLElement;
 
 // сохранение уровня сложности в глоб сост
-// fieldControls.forEach((control) => {
-//   control.addEventListener('click', () => {
-//     const level = (control as HTMLInputElement).value;
-//     localStorage.setItem('level', level);
-//     gameLevel = Number(level);
-//   });
-// });
+
 for (let i = 0; i < fieldControls.length; i++) {
   fieldControls[i].addEventListener('click', () => {
     console.log(`${fieldControls[i].name}: ${fieldControls[i].value}`);
