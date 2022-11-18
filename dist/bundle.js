@@ -67,10 +67,10 @@ var fieldControls = document.querySelectorAll('.field-control');
 var formFields = document.querySelectorAll('.form__field');
 var gameLevel = 0;
 var gameSection = document.querySelector('.game-section-container');
-var gameTable = document.createElement('div'); // тут будет стол с игрой
+var gameTable = document.createElement('div');
 var restartBtn = document.querySelector('.restart-btn');
-var container = document.querySelector('.container').classList;
-var cardField = document.querySelector('.game-section-container').classList;
+var container = document.querySelector('.container');
+var cardField = document.querySelector('.game-section-container');
 var cards = [];
 var winScreen = document.querySelector('.result-screen-win-container');
 var lostScreen = document.querySelector('.result-screen-lost-container');
@@ -82,13 +82,6 @@ var _loop_1 = function (i) {
     });
 };
 // сохранение уровня сложности в глоб сост
-// fieldControls.forEach((control) => {
-//   control.addEventListener('click', () => {
-//     const level = (control as HTMLInputElement).value;
-//     localStorage.setItem('level', level);
-//     gameLevel = Number(level);
-//   });
-// });
 for (var i = 0; i < fieldControls.length; i++) {
     _loop_1(i);
 }
@@ -104,8 +97,8 @@ var startGame = function (gameLevel) {
     var firstCard = null;
     var secondCard = null;
     var clickable = true;
-    container.toggle('cards-field');
-    cardField.toggle('cards-field');
+    container.classList.toggle('cards-field');
+    cardField.classList.toggle('cards-field');
     var cardsIcons = createIconsArray(gameLevel);
     var duplicatedCardsIcons = duplicateArray(cardsIcons);
     shuffle(duplicatedCardsIcons);
@@ -126,11 +119,15 @@ var startGame = function (gameLevel) {
         return currentTimeString;
     }
     var elapsedSeconds = -5;
-    function setTimer() {
+    function setTimer(elapsedSeconds) {
+        // setTimeout(function () {
+        //   // $('.timer').text(getElapsedTimeString(elapsedSeconds));
+        //   document.querySelector('.timer').innerHTML =
+        //     getElapsedTimeString(elapsedSeconds);
+        // }, 5000);
         setTimeout(function () {
-            // $('.timer').text(getElapsedTimeString(elapsedSeconds));
-            document.querySelector('.timer').innerHTML =
-                getElapsedTimeString(elapsedSeconds);
+            var timer = document.querySelector('.timer');
+            timer.innerHTML = getElapsedTimeString(elapsedSeconds);
         }, 5000);
     }
     setInterval(function () {
@@ -169,7 +166,9 @@ var startGame = function (gameLevel) {
                             secondCard = null;
                             clickable = true;
                         }, 500);
-                        if (Array.from(cards).every(function (card) { return card.className.includes('flip'); })) {
+                        if (Array.from(cards).every(function (card) {
+                            return card.className.includes('flip');
+                        })) {
                             gameSection.remove(gameTable);
                             winScreen.style.display = 'inherit';
                             setTimeout(function () {
