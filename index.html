@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Levels</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body>
-    <form class="container">
-      <label class="label__text">Choose the level:</label>
-      <div class="field">
-        <div class="form__field">
-          <label class="game_lever_text" for="game_level_easy">1</label>
-          <input
-            id="game_level_easy"
-            name="game_level"
-            class="field__control"
-            type="radio"
-            value="6"
-          />
-        </div>
-
-        <label class="game_lever_text" for="game_level_normal">2</label>
-        <input
-          id="game_level_normal"
-          name="game_level"
-          class="field__control"
-          type="radio"
-          value="12"
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Levels</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+            rel="stylesheet"
         />
+    </head>
 
-        <label class="game_lever_text" for="game_level_hard">3</label>
-        <input
-          id="game_level_hard"
-          name="game_level"
-          class="field__control"
-          type="radio"
-          value="18"
-        />
-      </div>
-      <div class="btn__start">Start</div>
-    </form>
+    <body>
+        <form class="container">
+            <label class="label__text">Choose the level:</label>
+            <div class="field">
+                <div class="form__field">
+                    <label class="game_lever_text" for="game_level_easy"
+                        >1</label
+                    >
+                    <input
+                        id="game_level_easy"
+                        name="game_level"
+                        class="field__control"
+                        type="radio"
+                        value="6"
+                    />
+                </div>
 
-    <!-- Генератор карт -->
-    <div class="game-section_container cardsField">
-      <div class="game-section_top">
-        <div class="timer">00.00</div>
-        <div class="restart_btn">Restart</div>
-      </div>
-    </div>
+                <label class="game_lever_text" for="game_level_normal">2</label>
+                <input
+                    id="game_level_normal"
+                    name="game_level"
+                    class="field__control"
+                    type="radio"
+                    value="12"
+                />
 
-    <!-- Game results  -->
-    <div class="result_screen_win_container">
-      <div class="result_screen_win">
-        <div class="win_screen">
-          <img class="screen_img" src="./img/won.svg" alt="" />
-          <h1 class="win_screen_title">You won!</h1>
-          <h2 class="win_screen_subtitle">Time spent:</h2>
-          <div class="timer">00.00</div>
+                <label class="game_lever_text" for="game_level_hard">3</label>
+                <input
+                    id="game_level_hard"
+                    name="game_level"
+                    class="field__control"
+                    type="radio"
+                    value="18"
+                />
+            </div>
+            <div class="btn__start">Start</div>
+        </form>
+
+        <!-- Генератор карт -->
+        <div class="game-section_container cardsField">
+            <div class="game-section_top">
+                <div class="timer">00.00</div>
+                <div class="restart_btn">Restart</div>
+            </div>
         </div>
-        <div class="restart_btn">Restart</div>
-      </div>
-    </div>
 
-    <div class="result_screen_lost_container">
-      <div class="result_screen_lost">
-        <div class="lost_screen">
-          <img class="screen_img" src="./img/lost.svg" alt="" />
-          <h1 class="lost_screen_title">You lost! :(</h1>
-          <h2 class="lost_screen_subtitle">Time spent:</h2>
-          <div class="timer">00.00</div>
+        <!-- Game results  -->
+        <div class="result_screen_win_container">
+            <div class="result_screen_win">
+                <div class="win_screen">
+                    <img class="screen_img" src="./img/won.svg" alt="" />
+                    <h1 class="win_screen_title">You won!</h1>
+                    <h2 class="win_screen_subtitle">Time spent:</h2>
+                    <div class="timer">00.00</div>
+                </div>
+                <div class="restart_btn">Restart</div>
+            </div>
         </div>
-        <div class="restart_btn">Restart</div>
-      </div>
-    </div>
 
-    <script src="script.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.6.1.min.js"
-      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-      crossorigin="anonymous"
-    ></script>
-  </body>
+        <div class="result_screen_lost_container">
+            <div class="result_screen_lost">
+                <div class="lost_screen">
+                    <img class="screen_img" src="./img/lost.svg" alt="" />
+                    <h1 class="lost_screen_title">You lost! :(</h1>
+                    <h2 class="lost_screen_subtitle">Time spent:</h2>
+                    <div class="timer">00.00</div>
+                </div>
+                <div class="restart_btn">Restart</div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"
+        ></script>
+    </body>
 </html>
