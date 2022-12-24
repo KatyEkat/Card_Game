@@ -145,7 +145,8 @@ const startGame = (gameLevel: Number) => {
                 card.className.includes('flip')
               )
             ) {
-              gameSection.remove(gameTable);
+              gameSection.remove();
+              gameTable.remove();
               winScreen.style.display = 'inherit';
               setTimeout(() => {
                 document
@@ -159,7 +160,8 @@ const startGame = (gameLevel: Number) => {
                 card.className.includes('flip')
               )
             ) {
-              gameSection.remove(gameTable);
+              gameSection.remove();
+              gameTable.remove();
               lostScreen.style.display = 'inherit';
               setTimeout(() => {
                 document
