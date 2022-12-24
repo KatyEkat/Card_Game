@@ -1,51 +1,41 @@
 {
-    "name": "card_game",
-    "version": "1.0.0",
-    "description": "Choose the cards",
-    "main": "script.js",
-    "dependencies": {
-        "eslint-config-prettier": "^8.5.0",
-        "http-server": "^14.1.1",
-        "i": "^0.3.7",
-        "lodash": "^4.17.21"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "http-server -p 3005",
-        "format": "prettier --write .Card_game/",
-        "lint:js": "eslint ./*.js",
-        "lint:css": "stylelint ./*.scss",
-        "lint": "npm run lint:js && npm run lint:css",
-        "prepare": "husky install",
-        "build": "webpack"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/KatyEkat/Card_game.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/KatyEkat/Card_game/issues"
-    },
-    "homepage": "https://github.com/KatyEkat/Card_game#readme",
-    "devDependencies": {
-        "copy-webpack-plugin": "^11.0.0",
-        "css-loader": "^6.7.1",
-        "css-minimizer-webpack-plugin": "^4.2.2",
-        "eslint": "^8.26.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "html-webpack-plugin": "^5.5.0",
-        "husky": "^8.0.1",
-        "mini-css-extract-plugin": "^2.6.1",
-        "prettier": "^2.7.1",
-        "scss-loader": "^0.0.1",
-        "stylelint": "^14.14.0",
-        "stylelint-config-prettier": "^9.0.3",
-        "stylelint-config-standard": "^29.0.0",
-        "stylelint-prettier": "^2.0.0",
-        "webpack": "^5.74.0",
-        "webpack-cli": "^4.10.0"
-    }
+  "name": "card_game",
+  "version": "1.0.0",
+  "description": "Choose the cards",
+  "main": "script.js",
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "lodash": "^4.17.21"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 3004",
+    "format": "prettier --write .Card_game/",
+    "lint:js": "eslint ./*.js",
+    "lint:css": "stylelint ./*.css",
+    "lint": "npm run lint:js && npm run lint:css",
+    "prepare": "husky install",
+    "build": "set MODE=production && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KatyEkat/Card_game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KatyEkat/Card_game/issues"
+  },
+  "homepage": "https://github.com/KatyEkat/Card_game#readme",
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.14.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^29.0.0",
+    "stylelint-prettier": "^2.0.0"
+  }
 }
